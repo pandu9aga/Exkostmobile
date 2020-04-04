@@ -11,18 +11,19 @@
         android:id="@+id/secondFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
         android:width="130dp"
         android:height="60dp"
-        android:theme="@style/buttonstyle1"
         android:text="Register"
         android:textSize="17dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/buttonstyle1"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintHorizontal_bias="0.800"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:layout_width="262dp"
@@ -49,32 +50,33 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="410dp"
-        android:layout_height="430dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
         android:background="#E4E7ED"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987"/>
+        app:layout_constraintVertical_bias="0.987" />
 
     <Button
         android:id="@+id/firstFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:width="130dp"
         android:height="60dp"
-        android:layout_marginTop="10dp"
-        android:theme="@style/buttonstyle1"
         android:text="Login"
         android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:theme="@style/buttonstyle1"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintHorizontal_bias="0.190"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
