@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.content.Intent;
 
 public class FirstFragment extends Fragment {
 
@@ -26,9 +26,11 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
 // display a message by using a Toast
-                Toast.makeText(getActivity(), "Anda Login", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
             }
         });
         return view;
     }
+
 }

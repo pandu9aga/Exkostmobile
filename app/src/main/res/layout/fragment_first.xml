@@ -79,7 +79,8 @@
             android:text="Masuk"
             android:textColor="#1e1f29"
             android:textSize="17sp"
-            android:theme="@style/buttonstyle2" />
+            android:theme="@style/buttonstyle2"
+            tools:ignore="OnClick" />
 
         <TextView
             android:id="@+id/textView3"
