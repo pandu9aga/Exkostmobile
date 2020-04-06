@@ -9,6 +9,7 @@
     tools:context="com.example.exkost.HomeActivity">
 
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"

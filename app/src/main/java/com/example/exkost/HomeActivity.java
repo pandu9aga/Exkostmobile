@@ -9,14 +9,22 @@ import android.widget.FrameLayout;
 import android.widget.Button;
 import android.widget.EditText;
 import android.os.Bundle;
+import android.view.View;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+import android.content.Intent;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity{
     LinearLayout linearLayout;
-    FrameLayout navbar, content, topbar;
+    FrameLayout navbar, content, topbar, menubar;
     Button buttonSearch, buttonMenu, home, myCart, myAuction, mySaldo;
     EditText textSearch;
+
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,15 @@ public class HomeActivity extends AppCompatActivity{
 // replace the FrameLayout with new Fragment
         fragmentTransaction.replace(R.id.content, new HomeFragment());
         fragmentTransaction.commit(); // save the changes
+
+        buttonMenu.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(HomeActivity.this,MenuActivity.class);
+                startActivity(i);
+            }
+        });
 
 // perform setOnClickListener event on First Button
         home.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +122,5 @@ public class HomeActivity extends AppCompatActivity{
         fragmentTransaction.commit(); // save the changes
 
     }
-
 
 }
