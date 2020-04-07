@@ -6,16 +6,15 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:checked="true"
-            android:icon="@drawable/ic_home"
-            android:title="Dashboard" />
+            android:icon="@drawable/ic_home1"
+            android:title="Home" />
         <item
             android:id="@+id/nav_account"
-            android:icon="@drawable/ic_profile"
+            android:icon="@drawable/ic_profile1"
             android:title="My Accout" />
         <item
             android:id="@+id/nav_notification"
-            android:icon="@drawable/ic_notification"
+            android:icon="@drawable/ic_notification1"
             android:title="Notification" />
     </group>
     <group
@@ -23,11 +22,11 @@
         android:checkableBehavior="none">
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_setting"
+            android:icon="@drawable/ic_setting1"
             android:title="Settings" />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/ic_help"
+            android:icon="@drawable/ic_help1"
             android:title="Help" />
     </group>
 

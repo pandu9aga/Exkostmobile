@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
 
 // replace the FrameLayout with new Fragment
-        fragmentTransaction.replace(R.id.frameLayout, new FirstFragment());
+        fragmentTransaction.replace(R.id.frameLayout, new LogFirstFragment());
         fragmentTransaction.commit(); // save the changes
 
 // perform setOnClickListener event on First Button
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 // load First Fragment
-                loadFragment(new FirstFragment());
+                loadFragment(new LogFirstFragment());
 
             }
         });
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 // load Second Fragment
-                loadFragment(new SecondFragment());
+                loadFragment(new LogSecondFragment());
             }
         });
 

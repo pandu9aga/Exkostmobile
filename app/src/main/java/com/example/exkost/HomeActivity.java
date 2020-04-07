@@ -1,126 +1,89 @@
 package com.example.exkost;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.FrameLayout;
-import android.widget.Button;
-import android.widget.EditText;
-import android.os.Bundle;
-import android.view.View;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
-import android.content.Intent;
-import android.view.Menu;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-public class HomeActivity extends AppCompatActivity{
-    LinearLayout linearLayout;
-    FrameLayout navbar, content, topbar, menubar;
-    Button buttonSearch, buttonMenu, home, myCart, myAuction, mySaldo;
-    EditText textSearch;
+import android.os.Bundle;
+import android.view.MenuItem;
 
-    View view;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.core.view.GravityCompat;
+
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Toolbar toolbar;
+
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
+
+    Fragment fragment;
+    FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_menu);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        setContentView(R.layout.activity_home);
+        navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
 
-// get the reference of Button's
-        buttonSearch = (Button) findViewById(R.id.buttonSearch);
-        buttonMenu = (Button) findViewById(R.id.buttonMenu);
-        home = (Button) findViewById(R.id.home);
-        myCart = (Button) findViewById(R.id.myCart);
-        myAuction = (Button) findViewById(R.id.myAuction);
-        mySaldo = (Button) findViewById(R.id.mySaldo);
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.syncState();
 
-        content = (FrameLayout) findViewById(R.id.content);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        FragmentManager fm = getFragmentManager();
-
-// create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-
-// replace the FrameLayout with new Fragment
-        fragmentTransaction.replace(R.id.content, new HomeFragment());
-        fragmentTransaction.commit(); // save the changes
-
-        buttonMenu.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                Intent i = new Intent(HomeActivity.this,MenuActivity.class);
-                startActivity(i);
-            }
-        });
-
-// perform setOnClickListener event on First Button
-        home.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-// load First Fragment
-                loadFragment(new HomeFragment());
-
-            }
-        });
-
-// perform setOnClickListener event on Second Button
-        myCart.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-// load First Fragment
-                loadFragment(new CartFragment());
-
-            }
-        });
-
-        myAuction.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-// load First Fragment
-                loadFragment(new LelangFragment());
-
-            }
-        });
-
-        mySaldo.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-// load First Fragment
-                loadFragment(new SaldoFragment());
-
-            }
-        });
-
+        navigationView.getMenu().getItem(0).setChecked(true);
+        firstFragmentDisplay(R.id.nav_home);
     }
 
+    private void firstFragmentDisplay(int itemId) {
 
-    private void loadFragment(Fragment fragment) {
+        fragment = null;
 
-// create a FragmentManager
-        FragmentManager fm = getFragmentManager();
+        switch (itemId) {
+            case R.id.nav_home:
+                fragment = new MenuHomeFragment();
+                break;
+            case R.id.nav_account:
+                fragment = new MenuProfileFragment();
+                break;
+            case R.id.nav_notification:
+                fragment = new MenuNotificationFragment();
+                break;
+        }
 
-// create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        if (fragment != null) {
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fLayout, fragment);
+            transaction.commit();
+        }
 
-// replace the FrameLayout with new Fragment
-        fragmentTransaction.replace(R.id.content, fragment);
-        fragmentTransaction.commit(); // save the changes
-
+        drawer.closeDrawers();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        firstFragmentDisplay(item.getItemId());
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawers();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

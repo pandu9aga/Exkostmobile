@@ -6,36 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.content.Intent;
 
-public class SecondFragment extends Fragment {
+public class LogFirstFragment extends Fragment {
+
 
     View view;
-    Button secondButton;
+    Button firstButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_second, container, false);
-
+        view = inflater.inflate(R.layout.login_fragment_first, container, false);
 // get the reference of Button
-        secondButton = (Button) view.findViewById(R.id.buttonDaftar);
-
-// perform setOnClickListener on second Button
-        secondButton.setOnClickListener(new View.OnClickListener() {
-
+        firstButton = (Button) view.findViewById(R.id.buttonMasuk);
+// perform setOnClickListener on first Button
+        firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 // display a message by using a Toast
-                Toast.makeText(getActivity(), "Anda Mendaftar", Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
             }
         });
-
         return view;
-
     }
+
 }

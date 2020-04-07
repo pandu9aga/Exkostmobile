@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.exkost.HomeFragment">
+    tools:context=".BtmmenuCart">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,21 +18,12 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:layout_width="180dp"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="240dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="240dp"
+                    android:height="90dp"
                     android:background="@color/gray">
 
                 </TextView>
@@ -44,21 +35,12 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:layout_width="180dp"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="240dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="240dp"
+                    android:height="90dp"
                     android:background="@color/gray">
 
                 </TextView>
@@ -70,21 +52,12 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:layout_width="180dp"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="240dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="240dp"
+                    android:height="90dp"
                     android:background="@color/gray">
 
                 </TextView>
@@ -96,21 +69,12 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:layout_width="180dp"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="240dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="240dp"
+                    android:height="90dp"
                     android:background="@color/gray">
 
                 </TextView>
@@ -119,23 +83,87 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="50dp">
+                    android:height="90dp"
+                    android:background="@color/gray">
 
                 </TextView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="380dp"
                     android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:height="50dp">
+                    android:height="90dp"
+                    android:background="@color/gray">
 
                 </TextView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="380dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:height="90dp"
+                    android:background="@color/gray">
+
+                </TextView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="380dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:height="90dp"
+                    android:background="@color/gray">
+
+                </TextView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="380dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:height="90dp"
+                    android:background="@color/gray">
+
+                </TextView>
+
             </TableRow>
 
         </TableLayout>
