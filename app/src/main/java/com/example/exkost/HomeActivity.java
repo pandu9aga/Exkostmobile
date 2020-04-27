@@ -6,11 +6,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -18,7 +25,11 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+
+    public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
 
@@ -112,4 +123,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return super.onCreateOptionsMenu(menu);
     }
 //searchmenu end
+
+        public void pindahactiv(View v){
+            Intent i = new Intent(HomeActivity.this,Topup.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+            startActivity(i);
+        }
 }

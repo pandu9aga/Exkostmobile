@@ -59,6 +59,7 @@
             app:fontFamily="@font/aldrich" />
 
         <Button
+            android:onClick="pindahactiv"
             android:id="@+id/button2"
             android:layout_width="60dp"
             android:layout_height="25dp"
