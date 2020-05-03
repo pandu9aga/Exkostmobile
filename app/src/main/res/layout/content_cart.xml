@@ -24,13 +24,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:id="@+id/ayam"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="bottom|top"
-                        android:layout_marginTop="60dp"/>
-
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -62,29 +55,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
                         android:layout_marginTop="70dp"
-                        android:text="Rp. 500.000 (start)"
+                        android:text="Tertinggi : Rp. 500.000"
                         android:textSize="20dp"
-                        android:textColor="#3fb647"/>
+                        android:textColor="@color/red"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Bid :"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Rp 600.000"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
 
                     <View
                         android:layout_width="15dp"
@@ -94,27 +76,28 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="135dp"
                         android:background="@drawable/ic_delete_black_24dp" />
 
                     <Button
-                        android:layout_width="30dp"
+                        android:layout_width="260dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="75dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/ic_favorite_black_24dp" />
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="160dp"
-                        android:hint="Tulis Catatan Untuk Pelelang"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
 
                 </RelativeLayout>
 
@@ -129,12 +112,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="bottom|top"
-                        android:layout_marginTop="60dp"/>
-
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -166,29 +143,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
                         android:layout_marginTop="70dp"
-                        android:text="Rp. 500.000 (start)"
+                        android:text="Tertinggi : Rp. 500.000"
                         android:textSize="20dp"
-                        android:textColor="#3fb647"/>
+                        android:textColor="@color/red"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Bid :"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Rp 600.000"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
 
                     <View
                         android:layout_width="15dp"
@@ -198,27 +164,28 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="135dp"
                         android:background="@drawable/ic_delete_black_24dp" />
 
                     <Button
-                        android:layout_width="30dp"
+                        android:layout_width="260dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="75dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/ic_favorite_black_24dp" />
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="160dp"
-                        android:hint="Tulis Catatan Untuk Pelelang"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
 
                 </RelativeLayout>
 
@@ -233,12 +200,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="bottom|top"
-                        android:layout_marginTop="60dp"/>
-
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -270,29 +231,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
                         android:layout_marginTop="70dp"
-                        android:text="Rp. 500.000 (start)"
+                        android:text="Tertinggi : Rp. 500.000"
                         android:textSize="20dp"
-                        android:textColor="#3fb647"/>
+                        android:textColor="@color/red"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Bid :"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Rp 600.000"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
 
                     <View
                         android:layout_width="15dp"
@@ -302,27 +252,28 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="135dp"
                         android:background="@drawable/ic_delete_black_24dp" />
 
                     <Button
-                        android:layout_width="30dp"
+                        android:layout_width="260dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="75dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/ic_favorite_black_24dp" />
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="160dp"
-                        android:hint="Tulis Catatan Untuk Pelelang"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
 
                 </RelativeLayout>
 
@@ -337,12 +288,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="bottom|top"
-                        android:layout_marginTop="60dp"/>
-
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -374,29 +319,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
                         android:layout_marginTop="70dp"
-                        android:text="Rp. 500.000 (start)"
+                        android:text="Tertinggi : Rp. 500.000"
                         android:textSize="20dp"
-                        android:textColor="#3fb647"/>
+                        android:textColor="@color/red"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Bid :"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Rp 600.000"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
 
                     <View
                         android:layout_width="15dp"
@@ -406,27 +340,28 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="135dp"
                         android:background="@drawable/ic_delete_black_24dp" />
 
                     <Button
-                        android:layout_width="30dp"
+                        android:layout_width="260dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="75dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/ic_favorite_black_24dp" />
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="160dp"
-                        android:hint="Tulis Catatan Untuk Pelelang"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
 
                 </RelativeLayout>
 
@@ -441,11 +376,93 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:gravity="bottom|top"
-                        android:layout_marginTop="60dp"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/lemari"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Almari 2x2 m"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="50dp"
+                        android:text="22.20"
+                        android:textSize="15dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="70dp"
+                        android:text="Tertinggi : Rp. 500.000"
+                        android:textSize="20dp"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent" />
+
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="135dp"
+                        android:background="@drawable/ic_delete_black_24dp" />
+
+                    <Button
+                        android:layout_width="260dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="160dp"
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
+
+                </RelativeLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:layout_width="100dp"
@@ -478,29 +495,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
                         android:layout_marginTop="70dp"
-                        android:text="Rp. 500.000 (start)"
+                        android:text="Tertinggi : Rp. 500.000"
                         android:textSize="20dp"
-                        android:textColor="#3fb647"/>
+                        android:textColor="@color/red"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="150dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Bid :"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:layout_marginTop="130dp"
-                        android:text="Rp 600.000"
-                        android:textColor="#ff5720"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="100dp"
+                        android:text="Anda : Rp. 4000"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
 
                     <View
                         android:layout_width="15dp"
@@ -510,80 +516,30 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:layout_marginTop="130dp"
+                        android:layout_marginTop="135dp"
                         android:background="@drawable/ic_delete_black_24dp" />
 
                     <Button
-                        android:layout_width="30dp"
+                        android:layout_width="260dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="75dp"
-                        android:layout_marginTop="130dp"
-                        android:background="@drawable/ic_favorite_black_24dp" />
+                        android:layout_marginTop="135dp"
+                        android:layout_marginLeft="90dp"
+                        android:background="@color/red"
+                        android:text="Lihat"
+                        android:textColor="@color/white"
+                        android:onClick="goTo">
+                    </Button>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="160dp"
-                        android:hint="Tulis Catatan Untuk Pelelang"
-                        android:inputType="text"
-                        android:textColor="#FFFFFF"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textAlignment="center"
+                        android:text="_______________________________________________"
+                        android:gravity="center_horizontal">
+                    </TextView>
 
                 </RelativeLayout>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:layout_width="380dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="90dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:layout_width="380dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="90dp"
-                    android:background="@color/gray">
-
-                </TextView>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:layout_width="380dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginRight="17dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:height="90dp"
-                    android:background="@color/gray">
-
-                </TextView>
 
             </TableRow>
 

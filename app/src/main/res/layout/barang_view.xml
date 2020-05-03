@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_scroll"
+    tools:context=".BarangView">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/navy"
+                android:onClick="backHome"
+                android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+        </RelativeLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:height="50dp"
+                    android:background="@color/navy"
+                    android:gravity="bottom|top"
+                    android:textColor="@color/light"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green"/>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/light"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/red"/>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="1134dp">
+
+                    <ImageView
+                        android:layout_width="380dp"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/lemari" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="295dp"
+                        android:text="Almari 2x2 m"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="395dp"
+                        android:text="Waktu : "
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="395dp"
+                        android:text="24-04-2000/15.36"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="350dp"
+                        android:text="lemari"
+                        android:textSize="20dp"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="440dp"
+                        android:text="Tertinggi :"
+                        android:textStyle="bold"
+                        android:textSize="25dp"
+                        android:textColor="@color/red" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="135dp"
+                        android:layout_marginTop="440dp"
+                        android:text="Rp 600.000"
+                        android:textStyle="bold"
+                        android:textSize="25dp"
+                        android:textColor="@color/red"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="490dp"
+                        android:text="Anda        :"
+                        android:textStyle="bold"
+                        android:textSize="25dp"
+                        android:textColor="@color/dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="135dp"
+                        android:layout_marginTop="490dp"
+                        android:text="Rp 500.000"
+                        android:textStyle="bold"
+                        android:textSize="25dp"
+                        android:textColor="@color/dark"/>
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="160dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="540dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/rectangle1grey"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text=" Rp. 1000" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="540dp"
+                        android:layout_marginLeft="180dp"
+                        android:background="@drawable/rectangleblue"
+                        android:textColor="@color/white"
+                        android:text="TAWAR" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:layout_marginTop="630dp"
+                        android:background="#ffe1e1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="480dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#fff">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Pelelang :"
+                                    android:textStyle="bold"
+                                    android:textSize="20dp"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="120dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Naruto"
+                                    android:textStyle="bold"
+                                    android:textSize="20dp"
+                                    android:textColor="@color/red" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="45dp"
+                                    android:text="Jember, Jawa Timur"
+                                    android:textStyle="bold"
+                                    android:textSize="20dp"
+                                    android:textColor="@color/gray" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="90dp"
+                                    android:text="Catatan :"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/gray" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="780dp"
+                                    android:layout_marginTop="120dp"
+                                    android:id="@+id/child_scroll">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Lorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit AmetLorem ipsum Dolor Sit Amet"
+                                        android:textStyle="bold"
+                                        android:textSize="18dp"
+                                        android:textColor="@color/black" />
+
+                                </FrameLayout>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </FrameLayout>
+
+                </RelativeLayout>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

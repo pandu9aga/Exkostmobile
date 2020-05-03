@@ -134,4 +134,25 @@ import java.util.Calendar;
         }
 //pindah activity end
 
+        public void goTo(View v) {
+            Intent intent = new Intent(HomeActivity.this, BarangView.class);
+            startActivity(intent);
+        }
+
+        public void myAucb(View v) {
+            Intent intent = new Intent(HomeActivity.this, LelangView.class);
+            intent.putExtra("stat","Berlangsung");
+            startActivity(intent);
+        }
+        public void myAuck(View v) {
+            Intent intent = new Intent(HomeActivity.this, LelangView.class);
+            intent.putExtra("stat","Kirim");
+            startActivity(intent);
+        }
+        public void myAucs(View v) {
+            Intent intent = new Intent(HomeActivity.this, LelangView.class);
+            intent.putExtra("stat","Selesai");
+            startActivity(intent);
+        }
+
 }

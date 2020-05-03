@@ -15,6 +15,9 @@
         <activity android:name=".IsiAlamat"></activity>
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".Topup" />
+        <activity android:name=".Tambah" />
+        <activity android:name=".BarangView" />
+        <activity android:name=".LelangView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

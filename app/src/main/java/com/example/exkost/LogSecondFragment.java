@@ -1,6 +1,7 @@
 package com.example.exkost;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,9 @@ public class LogSecondFragment extends Fragment {
 
 // display a message by using a Toast
                 Toast.makeText(getActivity(), "Anda Mendaftar", Toast.LENGTH_LONG).show();
+// display a message by using a Toast
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
 
             }
         });
