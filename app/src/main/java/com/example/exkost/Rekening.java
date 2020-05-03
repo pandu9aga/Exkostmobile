@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Topup extends AppCompatActivity {
+public class Rekening extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topup);
+        setContentView(R.layout.activity_rekening);
     }
 
-    public void pindahcheckout(View v){
-        Intent i = new Intent(Topup.this, CheckoutActivity.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+    public void pindahcheckoutlagi(View v){
+        Intent i = new Intent(Rekening.this, CheckoutActivity.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
         startActivity(i);
     }
 }

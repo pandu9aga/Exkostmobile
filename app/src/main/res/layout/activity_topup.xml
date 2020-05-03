@@ -84,6 +84,8 @@
 
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton1"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -91,8 +93,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"/>
 
-        <EditText
-            android:id="@+id/editText1"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView1"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -103,6 +106,8 @@
             android:layout_marginTop="100dp"
             android:gravity="center"/>
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton2"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -110,8 +115,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="140dp"/>
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView2"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -123,6 +129,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton3"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -133,8 +141,9 @@
             android:layout_marginTop="260dp"
             android:scaleType="centerCrop" />
 
-        <EditText
-            android:id="@+id/editText3"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView3"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -146,6 +155,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton5"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -153,8 +164,9 @@
             android:layout_marginTop="20dp"
             android:scaleType="centerCrop" />
 
-        <EditText
-            android:id="@+id/editText5"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView5"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -166,6 +178,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton6"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -173,8 +187,9 @@
             android:layout_marginLeft="155dp"
             android:layout_marginTop="140dp"/>
 
-        <EditText
-            android:id="@+id/editText6"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView6"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -186,6 +201,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton7"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -193,8 +210,9 @@
             android:layout_marginLeft="155dp"
             android:layout_marginTop="260dp"/>
 
-        <EditText
-            android:id="@+id/editText7"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView7"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -206,6 +224,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton8"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -213,8 +233,9 @@
             android:layout_marginLeft="289dp"
             android:layout_marginTop="20dp"/>
 
-        <EditText
-            android:id="@+id/editText8"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView8"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -226,6 +247,8 @@
             android:gravity="center"/>
 
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton9"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -233,8 +256,9 @@
             android:layout_marginLeft="289dp"
             android:layout_marginTop="140dp"/>
 
-        <EditText
-            android:id="@+id/editText9"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView9"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -245,6 +269,8 @@
             android:layout_marginTop="220dp"
             android:gravity="center"/>
         <ImageButton
+            android:onClick="pindahcheckout"
+            android:src="@drawable/money"
             android:id="@+id/imageButton10"
             android:layout_width="102dp"
             android:layout_height="86dp"
@@ -252,8 +278,9 @@
             android:layout_marginLeft="289dp"
             android:layout_marginTop="260dp"/>
 
-        <EditText
-            android:id="@+id/editText10"
+        <TextView
+            android:onClick="pindahcheckout"
+            android:id="@+id/TextView10"
             android:layout_width="101dp"
             android:layout_height="37dp"
             android:ems="10"
@@ -265,6 +292,7 @@
             android:gravity="center"/>
 
         <Button
+            android:onClick="pindahcheckout"
             android:id="@+id/button1"
             android:layout_width="104dp"
             android:layout_height="37dp"

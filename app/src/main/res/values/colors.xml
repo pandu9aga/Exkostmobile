@@ -15,5 +15,6 @@
     <color name="button_background_color">#925</color>
     <color name="background_color">#e7e7e7</color>
     <color name="button_color">#ff5720</color>
+    <color name="green_back"> #41b548</color>
 
 </resources>

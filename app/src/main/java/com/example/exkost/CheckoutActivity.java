@@ -14,8 +14,18 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
     }
 
-    public void pindahalamat(View v){
-        Intent i = new Intent(CheckoutActivity.this,IsiAlamat.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+    public void pindahrekening(View v){
+        Intent i = new Intent(CheckoutActivity.this, Rekening.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        startActivity(i);
+    }
+
+    public void pindahbukti(View v){
+        Intent i = new Intent(CheckoutActivity.this, Buktitrans.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        startActivity(i);
+    }
+
+    public void pindahtopup(View v){
+        Intent i = new Intent(CheckoutActivity.this, Topup.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
         startActivity(i);
     }
 }
