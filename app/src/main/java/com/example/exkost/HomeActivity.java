@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -114,12 +115,28 @@ import java.util.Calendar;
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                searchView.clearFocus();
+                //searchView.clearFocus();
+
+                //Intent intent = new Intent(getApplicationContext(), Search.class);
+                //startActivity(intent);
+                //return true;
+
+                Intent searchIntent = new Intent(getApplicationContext(), Search.class);
+                searchIntent.putExtra(SearchManager.QUERY, query);
+
+                Bundle appData = new Bundle();
+                appData.putBoolean(Search.JARGON, true); // put extra data to Bundle
+                searchIntent.putExtra(SearchManager.APP_DATA, appData); // pass the search context data
+                searchIntent.setAction(Intent.ACTION_SEARCH);
+
+                startActivity(searchIntent);
+
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 return false;
             }
         });
