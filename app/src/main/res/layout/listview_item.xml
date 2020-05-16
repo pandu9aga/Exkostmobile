@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageList"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_image_black_24dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/text_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="15dp"
+            android:text="Almari Ikea 2x2 m"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="50dp"
+            android:text="24-04-2000/22.20"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="70dp"
+            android:text="Tertinggi : Rp. 500.000"
+            android:textSize="20dp"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="100dp"
+            android:id="@+id/text_subhead"
+            android:text="lemari"
+            android:textColor="@color/black"
+            android:textSize="22dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="135dp"
+            android:background="@color/red"
+            android:text="Lihat"
+            android:textColor="@color/white"
+            android:onClick="goTo">
+        </Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="160dp"
+            android:textAlignment="center"
+            android:text="_______________________________________________"
+            android:gravity="center_horizontal">
+        </TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>

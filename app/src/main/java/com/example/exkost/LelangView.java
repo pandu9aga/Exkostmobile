@@ -32,7 +32,7 @@ public class LelangView extends AppCompatActivity{
                 btnStat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(LelangView.this, HomeActivity.class);
+                        Intent intent = new Intent(LelangView.this, LelangSend.class);
                         startActivity(intent);
                     }
                 });
