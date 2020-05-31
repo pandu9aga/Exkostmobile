@@ -3,36 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.exkost.LogFirstFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginFrag">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <!--TextView and Button displayed in First Fragment -->
 
-        <EditText
-            android:id="@+id/loginPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_below="@+id/loginEmail"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:autofillHints="password"
-            android:background="@color/light"
-            android:ems="10"
-            android:inputType="textPassword" />
-
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/loginEmail"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:autofillHints="email"
-            android:background="@color/light"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/textView"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:autofillHints="email"
+                android:id="@+id/emailText"
+                android:background="@color/light"
+                android:ems="10"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="5dp"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:autofillHints="password"
+                android:id="@+id/passwordText"
+                android:background="@color/light"
+                android:ems="10"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView"
@@ -61,7 +76,7 @@
             android:textColor="#1e1f29" />
 
         <Button
-            android:id="@+id/buttonMasuk"
+            android:id="@+id/buttonMasuk1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/loginPassword"

@@ -95,7 +95,7 @@
             android:textColor="#1e1f29" />
 
         <Button
-            android:id="@+id/buttonDaftar"
+            android:id="@+id/buttonDaftar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/regisPassword"

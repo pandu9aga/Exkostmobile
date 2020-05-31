@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -27,14 +29,26 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.exkost.Api.Url;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.view.GravityCompat;
+
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +61,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Fragment fragment;
     FragmentTransaction transaction;
 
+    SessionManager sessionManager;
+
+    //private RequestQueue queue;
+
+    String id,saldo,nama;
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
@@ -77,11 +96,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
+
+        sessionManager = new SessionManager(this);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         navigationView = findViewById(R.id.nav_view);
         drawer = findViewById(R.id.drawer_layout);
+        View headerView = navigationView.getHeaderView(0);
+        TextView namaakun = (TextView) headerView.findViewById(R.id.namaAkun);
+        TextView saldoakun = (TextView) headerView.findViewById(R.id.saldoAkun);
 
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,7 +117,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().getItem(0).setChecked(true);
         firstFragmentDisplay(R.id.nav_home);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            id = extras.getString("ID");
+            saldo = extras.getString("SALDO");
+            nama = extras.getString("NAMA");
 
+            namaakun.setText(nama);
+            saldoakun.setText("Saldo: Rp."+saldo);
+        }else {
+            saldo = sessionManager.getSaldoAkun();
+            nama = sessionManager.getNamaAkun();
+
+            namaakun.setText(nama);
+            saldoakun.setText("Saldo: Rp."+saldo);
+        }
     }
 
 //optionmenu start
@@ -109,6 +149,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_notification:
                 fragment = new MenuNotificationFragment();
+                break;
+            case R.id.nav_logout:
+                sessionManager.logout();
                 break;
         }
 
@@ -147,11 +190,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //searchView.clearFocus();
-
-                //Intent intent = new Intent(getApplicationContext(), Search.class);
-                //startActivity(intent);
-                //return true;
 
                 Intent searchIntent = new Intent(getApplicationContext(), Search.class);
                 searchIntent.putExtra(SearchManager.QUERY, query);

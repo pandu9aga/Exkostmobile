@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1e1f29"
-    tools:context=".MainActivity">
+    android:background="#1e1f29">
 
     <Button
-        android:id="@+id/secondFragment"
+        android:id="@+id/secondFragment1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -63,7 +62,7 @@
         app:layout_constraintVertical_bias="0.987" />
 
     <Button
-        android:id="@+id/firstFragment"
+        android:id="@+id/firstFragment1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
