@@ -109,7 +109,7 @@ public class LogFirstFragment extends Fragment {
         }
     }
 
-    private void _loginProcess() {
+    private void loginProcess() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.API_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -137,13 +137,13 @@ public class LogFirstFragment extends Fragment {
                         startActivity(main);
                     }
                 } catch (Exception e) {
-                    Snackbar.make(fragView, "Data tidak ditemukan", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(fragView, e.toString(), Snackbar.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Snackbar.make(fragView, "Kesalahan dalam mengakses server", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(fragView, error.toString(), Snackbar.LENGTH_LONG).show();
             }
         })
         {
@@ -161,7 +161,7 @@ public class LogFirstFragment extends Fragment {
 
     public void confirmInputLogin() {
         if (validateEmail() | validatePassword()) {
-            _loginProcess();
+            loginProcess();
         }
     }
 

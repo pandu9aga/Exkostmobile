@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/regisFrag"
     tools:context="com.example.exkost.LogSecondFragment"
     android:theme="@style/LogTheme">
     <com.google.android.material.card.MaterialCardView
@@ -21,7 +22,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/regisNama"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -30,13 +34,18 @@
                     android:drawableLeft="@drawable/ic_person"
                     android:drawablePadding="8dp"
                     android:hint="Nama"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="nama"
+                    android:id="@+id/namarText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:id="@+id/regisAlamat"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -44,13 +53,19 @@
                     android:drawableStart="@drawable/ic_home1"
                     android:drawableLeft="@drawable/ic_home1"
                     android:drawablePadding="8dp"
-                    android:hint="Alamat" />
+                    android:hint="Alamat"
+                    android:inputType="text"
+                    android:autofillHints="alamat"
+                    android:id="@+id/alamatrText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:id="@+id/regisNotelp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -58,13 +73,19 @@
                     android:drawableStart="@drawable/ic_phone"
                     android:drawableLeft="@drawable/ic_phone"
                     android:drawablePadding="8dp"
-                    android:hint="No Telepon" />
+                    android:hint="No Telepon"
+                    android:inputType="number"
+                    android:autofillHints="no telepon"
+                    android:id="@+id/notelprText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:id="@+id/regisNorek"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -72,13 +93,19 @@
                     android:drawableStart="@drawable/ic_account_balance_wallet"
                     android:drawableLeft="@drawable/ic_account_balance_wallet"
                     android:drawablePadding="8dp"
-                    android:hint="No Rekening" />
+                    android:hint="No Rekening"
+                    android:inputType="text"
+                    android:autofillHints="no rekening"
+                    android:id="@+id/norekrText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:id="@+id/regisEmail"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -87,14 +114,19 @@
                     android:drawableLeft="@drawable/ic_mail_outline"
                     android:drawablePadding="8dp"
                     android:hint="Email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:autofillHints="email"
+                    android:id="@+id/emailrText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:endIconMode="password_toggle">
+                app:endIconMode="password_toggle"
+                android:id="@+id/regisPassword"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -103,7 +135,9 @@
                     android:drawableLeft="@drawable/ic_lock_outline"
                     android:drawablePadding="8dp"
                     android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:autofillHints="email"
+                    android:id="@+id/passwordrText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
@@ -119,7 +153,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="Login"
+                    android:text="Register"
                     android:textAllCaps="true"
                     android:textColor="#1e1f29" />
             </com.google.android.material.card.MaterialCardView>

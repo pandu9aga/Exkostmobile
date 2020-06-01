@@ -129,6 +129,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }else {
             saldo = sessionManager.getSaldoAkun();
             nama = sessionManager.getNamaAkun();
+            id = sessionManager.getIdAkun();
 
             namaakun.setText(nama);
             saldoakun.setText("Saldo: Rp."+saldo);

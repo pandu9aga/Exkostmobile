@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="205dp"
+    android:layout_height="330dp"
+    android:background="@drawable/rectangle_barang"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="280dp"
+        android:text="TAWAR"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:id="@+id/toBarang"/>
+
+    <ImageView
+        android:id="@+id/gambarBarang"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <TextView
+        android:id="@+id/namaBarang"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="140dp"
+        android:gravity="center_horizontal"
+        android:text="Judul"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/namaJenis"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginLeft="20dp"
+        android:text="Kategori"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/hargaBarang"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="20dp"
+        android:text="Rp 000000"
+        android:textColor="@color/red"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/waktuLelang"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginLeft="20dp"
+        android:text="24-04-2000/10.00"
+        android:textSize="17dp" />
+
+</FrameLayout>
