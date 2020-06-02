@@ -134,6 +134,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             namaakun.setText(nama);
             saldoakun.setText("Saldo: Rp."+saldo);
         }
+
     }
 
 //optionmenu start
@@ -241,6 +242,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(HomeActivity.this, LelangView.class);
             intent.putExtra("stat","Selesai");
             startActivity(intent);
+        }
+
+        public String dataId(){
+            id = sessionManager.getIdAkun();
+            return id;
         }
 
 }

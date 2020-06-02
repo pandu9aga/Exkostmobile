@@ -1,14 +1,18 @@
 package com.example.exkost;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.exkost.Api.Url;
 import com.example.exkost.Model.ModelHome;
@@ -26,9 +31,11 @@ import com.example.exkost.adapter.AdapterHome;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,12 +51,12 @@ public class BtmmenuHome extends Fragment {
     private SwipeRefreshLayout swipeHome;
     SessionManager sessionManager;
     private RequestQueue queue;
-    String id;
 
     List<ModelHome> mItems;
     RecyclerView mRecyclerview;
     RecyclerView.LayoutManager mManager;
     RecyclerView.Adapter mAdapter;
+    ProgressDialog pd;
 
     public BtmmenuHome() {
         // Required empty public constructor
@@ -69,66 +76,69 @@ public class BtmmenuHome extends Fragment {
         swipeHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                reload();
+                if(swipeHome.isRefreshing()) {
+                    swipeHome.setRefreshing(false);
+                }
             }
         });
 
-        id = sessionManager.getIdAkun();
-
-        mRecyclerview = (RecyclerView) view.findViewById(R.id.recHome);
-        mManager = new LinearLayoutManager(getActivity());
-        mRecyclerview.setLayoutManager(mManager);
-        mAdapter = new AdapterHome(getActivity(),mItems);
-        mRecyclerview.setAdapter(mAdapter);
-
-        mItems = new ArrayList<>();
-
-        loadHome();
+        reload();
 
         return view;
     }
 
+    public void reload(){
+        mRecyclerview = (RecyclerView) view.findViewById(R.id.recHome);
+        pd = new ProgressDialog(getActivity());
+        mItems = new ArrayList<>();
+
+        loadHome();
+
+        mManager = new GridLayoutManager(getActivity(),2);
+        mRecyclerview.setLayoutManager(mManager);
+        mAdapter = new AdapterHome(getActivity(),mItems);
+        mRecyclerview.setAdapter(mAdapter);
+    }
+
     private void loadHome() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.API_HOME, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("data");
+        pd.setMessage("Mengambil Data");
+        pd.setCancelable(false);
+        pd.show();
 
-                    for(int i = 0 ; i < response.length(); i++)
-                    {
-                        JSONObject data = array.getJSONObject(i);
-                        ModelHome md = new ModelHome();
-                        md.setIdBarang(data.getString("id_barang"));
-                        md.setNamaBarang(data.getString("nama_barang"));
-                        md.setNamaJenis(data.getString("nama_jenis_barang"));
-                        md.setHargaBarang(data.getString("harga_barang"));
-                        md.setWaktuLelang(data.getString("waktu_lelang"));
-                        mItems.add(md);
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, Url.API_HOME,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        for(int i = 0 ; i < response.length(); i++)
+                        {
+                            try {
+                                JSONObject data = response.getJSONObject(i);
+                                ModelHome md = new ModelHome();
+                                md.setIdBarang(data.getString("id_barang"));
+                                md.setNamaBarang(data.getString("nama_barang"));
+                                md.setNamaJenis(data.getString("nama_jenis_barang"));
+                                md.setHargaBarang(data.getString("harga_barang"));
+                                md.setWaktuLelang(data.getString("waktu_lelang"));
+                                mItems.add(md);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        mAdapter.notifyDataSetChanged();
                     }
-                    mAdapter.notifyDataSetChanged();
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                    }
+                });
 
-                } catch (Exception e) {
-                    Snackbar.make(swipeHome, e.toString(), Snackbar.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Snackbar.make(swipeHome, error.toString(), Snackbar.LENGTH_LONG).show();
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("id", id.trim());
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
+        AppController.getInstance().addToRequestQueue(reqData);
     }
 
 }

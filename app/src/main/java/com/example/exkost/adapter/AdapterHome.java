@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.exkost.BarangView;
-import com.example.exkost.HomeActivity;
 import com.example.exkost.Model.ModelHome;
 import com.example.exkost.R;
 
@@ -75,10 +75,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.HolderData> {
                 @Override
                 public void onClick(View view) {
                     Intent update = new Intent(context, BarangView.class);
-                    update.putExtra("namabarang",md.getNamaBarang());
-                    update.putExtra("namajenis",md.getNamaJenis());
-                    update.putExtra("waktulelang",md.getWaktuLelang());
-                    update.putExtra("hargabarang",md.getHargaBarang());
+                    update.putExtra("id_barang",md.getIdBarang());
 
                     context.startActivity(update);
                 }
