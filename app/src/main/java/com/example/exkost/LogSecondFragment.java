@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,8 +54,8 @@ public class LogSecondFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Activity activity = getActivity();
-                if(activity instanceof MainActivity){
-                    MainActivity myactivity = (MainActivity) activity;
+                if(activity instanceof LoginActivity){
+                    LoginActivity myactivity = (LoginActivity) activity;
                     myactivity.loadFragment(new LogFirstFragment());
                 }
             }
@@ -169,7 +168,7 @@ public class LogSecondFragment extends Fragment {
                         Snackbar.make(fragViewr, message, Snackbar.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getActivity(), "Anda Berhasil Mendaftar", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {

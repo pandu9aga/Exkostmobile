@@ -15,7 +15,7 @@ public class Topup extends AppCompatActivity {
     }
 
     public void pindahcheckout(View v){
-        Intent i = new Intent(Topup.this, CheckoutActivity.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        Intent i = new Intent(Topup.this, CheckoutActivity.class); //LoginActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
         startActivity(i);
     }
 }

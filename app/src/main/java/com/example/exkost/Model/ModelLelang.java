@@ -1,17 +1,20 @@
 package com.example.exkost.Model;
 
-public class ModelHome {
-    String namabarang, idbarang, namajenis, hargabarang, waktulelang, gambarbarang;
+public class ModelLelang {
+    String namabarang, idbarang, namajenis, hargabarang, waktulelang, gambarbarang, statbid, stattrans, statfail;
 
-    public ModelHome(){}
+    public ModelLelang(){}
 
-    public ModelHome(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang) {
+    public ModelLelang(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang, String statbid, String stattrans, String statfail) {
         this.namabarang = namabarang;
         this.idbarang = idbarang;
         this.hargabarang = hargabarang;
         this.namajenis = namajenis;
         this.waktulelang = waktulelang;
         this.gambarbarang = gambarbarang;
+        this.statbid = statbid;
+        this.stattrans = stattrans;
+        this.statfail = statfail;
     }
 
     public String getNamaBarang() {
@@ -52,6 +55,27 @@ public class ModelHome {
     }
     public void setGambarBarang(String gambarbarang) {
         this.gambarbarang = gambarbarang;
+    }
+
+    public String getStatBid() {
+        return statbid;
+    }
+    public void setStatBid(String statbid) {
+        this.statbid = statbid;
+    }
+
+    public String getStatTrans() {
+        return stattrans;
+    }
+    public void setStatTrans(String stattrans) {
+        this.stattrans = stattrans;
+    }
+
+    public String getStatFail() {
+        return statfail;
+    }
+    public void setStatFail(String statfail) {
+        this.statfail = statfail;
     }
 }
 

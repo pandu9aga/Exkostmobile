@@ -1,17 +1,22 @@
 package com.example.exkost.Model;
 
-public class ModelHome {
-    String namabarang, idbarang, namajenis, hargabarang, waktulelang, gambarbarang;
+public class ModelCart {
 
-    public ModelHome(){}
+    String namabarang, idbarang, namajenis, hargabarang, waktulelang, gambarbarang, highbid, mybid, statbid, stattrans;
 
-    public ModelHome(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang) {
+    public ModelCart(){}
+
+    public ModelCart(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang, String highbid, String mybid, String statbid, String stattrans) {
         this.namabarang = namabarang;
         this.idbarang = idbarang;
         this.hargabarang = hargabarang;
         this.namajenis = namajenis;
         this.waktulelang = waktulelang;
         this.gambarbarang = gambarbarang;
+        this.highbid = highbid;
+        this.mybid = mybid;
+        this.statbid = statbid;
+        this.stattrans =stattrans;
     }
 
     public String getNamaBarang() {
@@ -53,5 +58,32 @@ public class ModelHome {
     public void setGambarBarang(String gambarbarang) {
         this.gambarbarang = gambarbarang;
     }
-}
 
+    public String getHighBid() {
+        return highbid;
+    }
+    public void setHighBid(String highbid) {
+        this.highbid = highbid;
+    }
+
+    public String getMyBid() {
+        return mybid;
+    }
+    public void setMyBid(String mybid) {
+        this.mybid = mybid;
+    }
+
+    public String getStatBid() {
+        return statbid;
+    }
+    public void setStatBid(String statbid) {
+        this.statbid = statbid;
+    }
+
+    public String getStatTrans() {
+        return stattrans;
+    }
+    public void setStatTrans(String stattrans) {
+        this.stattrans = stattrans;
+    }
+}

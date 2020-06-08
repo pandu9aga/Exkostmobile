@@ -1,11 +1,11 @@
 package com.example.exkost.Model;
 
-public class ModelHome {
+public class ModelSearch {
     String namabarang, idbarang, namajenis, hargabarang, waktulelang, gambarbarang;
 
-    public ModelHome(){}
+    public ModelSearch(){}
 
-    public ModelHome(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang) {
+    public ModelSearch(String namabarang, String idbarang, String namajenis, String hargabarang, String waktulelang, String gambarbarang) {
         this.namabarang = namabarang;
         this.idbarang = idbarang;
         this.hargabarang = hargabarang;

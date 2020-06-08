@@ -4,206 +4,208 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuProfileFragment">
+    tools:context=".MenuProfileFragment"
+    android:id="@+id/viewProfil">
 
-    <RelativeLayout android:orientation="vertical"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:background="@color/dark">
+            android:background="@color/dark"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="65dp"
-                android:layout_marginLeft="116dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="65dp"
-                android:layout_marginRight="109dp"
-                android:layout_marginBottom="60dp"
+                android:layout_gravity="center"
                 android:src="@drawable/logo">
 
             </androidx.appcompat.widget.AppCompatImageView>
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="175dp"
             android:layout_height="175dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/tikus"
+            android:layout_gravity="center"
+            app:srcCompat="@android:drawable/ic_menu_gallery"
             app:civ_border_color="@color/navy"
             app:civ_border_width="3dp"
             app:civ_shadow="true"
             app:civ_shadow_color="#8BC34A"
-            app:civ_shadow_radius="10" />
+            app:civ_shadow_radius="10"
+            android:id="@+id/fotoProfil"/>
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="60dp"
-            android:layout_height="25dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="153dp"
-            android:layout_marginEnd="153dp"
-            android:layout_marginTop="250dp"
+            android:id="@+id/gantiFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/buttonshape"
             android:text="Ganti Foto"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="#ffff"
             android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/akunNama"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:drawablePadding="8dp"
+                    android:hint="Nama"
+                    android:inputType="textPersonName"
+                    android:autofillHints="nama"
+                    android:id="@+id/namaText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/akunAlamat"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_home1"
+                    android:drawableLeft="@drawable/ic_home1"
+                    android:drawablePadding="8dp"
+                    android:hint="Alamat"
+                    android:inputType="text"
+                    android:autofillHints="alamat"
+                    android:id="@+id/alamatText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/akunNotelp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:drawablePadding="8dp"
+                    android:hint="No Telepon"
+                    android:inputType="number"
+                    android:autofillHints="no telepon"
+                    android:id="@+id/notelpText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/akunNorek"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_account_balance_wallet"
+                    android:drawableLeft="@drawable/ic_account_balance_wallet"
+                    android:drawablePadding="8dp"
+                    android:hint="No Rekening"
+                    android:inputType="text"
+                    android:autofillHints="no rekening"
+                    android:id="@+id/norekText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/akunEmail"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_mail_outline"
+                    android:drawableLeft="@drawable/ic_mail_outline"
+                    android:drawablePadding="8dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:autofillHints="email"
+                    android:id="@+id/emailText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:endIconMode="password_toggle"
+                android:id="@+id/akunPassword"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_lock_outline"
+                    android:drawableLeft="@drawable/ic_lock_outline"
+                    android:drawablePadding="8dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:autofillHints="email"
+                    android:id="@+id/passwordText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="275dp">
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="5dp"
-                android:hint="Masukkan Nama Anda"
-                android:inputType="text" />
-
-            <EditText
-                android:text="Tanggal dipilih : "
-                android:id="@+id/tv_dateresult"
-                android:layout_width="359dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="55dp"
-                android:inputType="date" />
+            android:layout_marginBottom="30dp">
 
             <Button
-                android:text="@string/pick_date"
-                android:onClick="showDatePickerDialog"
+                android:id="@+id/saveProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="363dp"
-                android:layout_marginLeft="363dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                android:background="@drawable/ic_date_range_black_24dp"
-                android:backgroundTint="@color/navy"
-                tools:ignore="OnClick" />
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="105dp"
-                android:hint="Masukkan Alamat Anda"
-                android:inputType="text" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="155dp"
-                android:hint="Masukkan Nomor Telepon"
-                android:inputType="phone" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="205dp"
-                android:hint="Masukkan Email"
-                android:inputType="textEmailAddress" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="255dp"
-                android:hint="Masukkan Rekening"
-                android:inputType="textUri" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="305dp"
-                android:hint="Masukkan Password"
-                android:inputType="textUri" />
+                android:layout_marginRight="45dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/buttonshape"
+                android:text="Simpan"
+                android:paddingRight="50dp"
+                android:paddingLeft="50dp"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="135dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="263dp"
-            android:layout_marginLeft="263dp"
-            android:layout_marginTop="646dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="37dp"
-            android:background="@drawable/buttonshape"
-            android:text="Simpan"
-            android:textSize="20dp"
-            android:textColor="@color/white" />
-
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>

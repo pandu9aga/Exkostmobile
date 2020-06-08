@@ -5,155 +5,188 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_scroll"
+    android:theme="@style/LogTheme"
     tools:context=".Tambah">
 
-    <RelativeLayout android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/background_color">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:background="@color/navy"
                 android:onClick="backHome"
                 android:src="@drawable/ic_arrow_back_black_24dp"/>
 
-        </RelativeLayout>
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginBottom="5dp"
-                    android:height="50dp"
-                    android:background="@color/navy"
-                    android:gravity="bottom|top"
-                    android:textColor="@color/light"
-                    android:text="Tambah Barang"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/light"/>
-
-            <TableRow
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fff">
+                android:layout_marginLeft="0dp"
+                android:background="@color/navy"
+                android:gravity="bottom|top"
+                android:textColor="@color/light"
+                android:paddingLeft="5dp"
+                android:text="Tambah Barang"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
-                <RelativeLayout
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/light">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/namaBarang"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
-                    android:layout_height="800dp">
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:ems="20"
+                    android:hint="Nama Barang"
+                    android:inputType="text"
+                    android:autofillHints="nama barang"
+                    android:id="@+id/namabarangText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="800dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/hargaBarang"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:ems="20"
+                    android:hint="Harga Barang"
+                    android:inputType="number"
+                    android:autofillHints="harga barang"
+                    android:id="@+id/hargabarangText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/editText4"
-                            android:layout_width="290dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="50dp"
-                            android:ems="10"
-                            android:hint="Nama Barang"
-                            android:inputType="text" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/waktuLelang"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
 
-                        <EditText
-                            android:id="@+id/editText11"
-                            android:layout_width="290dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="number"
-                            android:hint="Harga Barang"
-                            android:layout_marginTop="105dp"
-                            android:layout_marginLeft="20dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:ems="20"
+                    android:hint="Waktu Lelang"
+                    android:inputType="datetime"
+                    android:autofillHints="waktu lelang"
+                    android:id="@+id/waktulelangText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/editText12"
-                            android:layout_width="290dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="datetime"
-                            android:hint="Waktu Habis"
-                            android:layout_marginTop="160dp"
-                            android:layout_marginLeft="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Jenis Barang:"/>
 
-                        <Spinner
-                            android:id="@+id/spUpload"
-                            android:layout_width="290dp"
-                            android:layout_height="40dp"
-                            android:ems="10"
-                            android:autofillHints="Jenis Barang"
-                            android:layout_marginTop="215dp"
-                            android:layout_marginLeft="20dp"/>
+                <Spinner
+                    android:id="@+id/spUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="20"
+                    android:autofillHints="Jenis Barang"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
 
-                        <EditText
-                            android:id="@+id/editText14"
-                            android:layout_width="290dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:hint="Catatan"
-                            android:layout_marginTop="265dp"
-                            android:layout_marginLeft="20dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/catatan"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
 
-                        <Button
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="330dp"
-                            android:layout_marginLeft="20dp"
-                            android:textColor="@color/white"
-                            android:background="@color/red"
-                            android:text="Upload Gambar"
-                            android:id="@+id/uploadButton"
-                            />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:ems="20"
+                    android:hint="Catatan"
+                    android:inputType="number"
+                    android:autofillHints="catatan"
+                    android:id="@+id/catatanText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <ImageView
-                            android:layout_width="300dp"
-                            android:layout_height="200dp"
-                            android:layout_weight="1"
-                            android:layout_marginTop="450dp"
-                            android:layout_marginLeft="40dp"
-                            android:id="@+id/imageView"
-                            app:srcCompat="@android:drawable/ic_menu_gallery"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:background="@color/red"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Upload Gambar"
+                android:id="@+id/uploadButton" />
 
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="730dp"
-                            android:textColor="@color/white"
-                            android:background="@color/red"
-                            android:text="Tambah Barang"
-                            android:id="@+id/tambahBarang"
-                            />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@android:drawable/ic_menu_gallery"
+                android:id="@+id/imageUpload"/>
 
-                    </FrameLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/white"
+                android:background="@color/red"
+                android:text="Tambah Barang"
+                android:id="@+id/tambahBarang"
+                />
 
-                </RelativeLayout>
+        </LinearLayout>
 
-            </TableRow>
-
-        </TableLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>

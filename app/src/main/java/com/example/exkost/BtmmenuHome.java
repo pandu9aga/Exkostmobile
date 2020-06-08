@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.exkost.Api.Url;
 import com.example.exkost.Model.ModelHome;
 import com.example.exkost.adapter.AdapterHome;
@@ -69,6 +70,8 @@ public class BtmmenuHome extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.content_home, container, false);
 
+        queue = Volley.newRequestQueue(getActivity());
+
         swipeHome = view.findViewById(R.id.swipeHome);
 
         swipeHome.setColorSchemeResources(R.color.red, R.color.red2);
@@ -102,32 +105,41 @@ public class BtmmenuHome extends Fragment {
     }
 
     private void loadHome() {
+        SessionManager sessionManager = new SessionManager(getActivity());
+        final String id_akun = sessionManager.getIdAkun();
+
         pd.setMessage("Mengambil Data");
         pd.setCancelable(false);
         pd.show();
 
-        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, Url.API_HOME,null,
-                new Response.Listener<JSONArray>() {
+        StringRequest reqData = new StringRequest(Request.Method.POST, Url.API_HOME,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(String response) {
                         pd.cancel();
                         Log.d("volley","response : " + response.toString());
-                        for(int i = 0 ; i < response.length(); i++)
-                        {
-                            try {
-                                JSONObject data = response.getJSONObject(i);
-                                ModelHome md = new ModelHome();
-                                md.setIdBarang(data.getString("id_barang"));
-                                md.setNamaBarang(data.getString("nama_barang"));
-                                md.setNamaJenis(data.getString("nama_jenis_barang"));
-                                md.setHargaBarang(data.getString("harga_barang"));
-                                md.setWaktuLelang(data.getString("waktu_lelang"));
-                                mItems.add(md);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                        try {
+                            JSONArray j = new JSONArray(response);
+                            for(int i = 0 ; i < response.length(); i++)
+                            {
+                                try {
+                                    JSONObject data = j.getJSONObject(i);
+                                    ModelHome md = new ModelHome();
+                                    md.setIdBarang(data.getString("id_barang"));
+                                    md.setNamaBarang(data.getString("nama_barang"));
+                                    md.setNamaJenis(data.getString("nama_jenis_barang"));
+                                    md.setHargaBarang(data.getString("harga_barang"));
+                                    md.setWaktuLelang(data.getString("waktu_lelang"));
+                                    md.setGambarBarang(data.getString("nama_gambar_barang"));
+                                    mItems.add(md);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
+                            mAdapter.notifyDataSetChanged();
+                        }catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        mAdapter.notifyDataSetChanged();
                     }
                 },
                 new Response.ErrorListener() {
@@ -136,9 +148,17 @@ public class BtmmenuHome extends Fragment {
                         pd.cancel();
                         Log.d("volley", "error : " + error.getMessage());
                     }
-                });
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("id", id_akun);
+                        return params;
+                    }
+                };
 
-        AppController.getInstance().addToRequestQueue(reqData);
+        queue.add(reqData);
     }
 
 }

@@ -15,13 +15,13 @@ public class Buktitrans extends AppCompatActivity {
     }
 
     public void pindahhome(View v){
-        Intent i = new Intent(Buktitrans.this, HomeActivity.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        Intent i = new Intent(Buktitrans.this, HomeActivity.class); //LoginActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
         startActivity(i);
     }
 
 
     public void confirkecheckout(View v){
-        Intent i = new Intent(Buktitrans.this, CheckoutActivity.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        Intent i = new Intent(Buktitrans.this, CheckoutActivity.class); //LoginActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
         startActivity(i);
     }
 

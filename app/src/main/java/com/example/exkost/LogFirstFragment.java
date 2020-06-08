@@ -59,8 +59,8 @@ public class LogFirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Activity activity = getActivity();
-                if(activity instanceof MainActivity){
-                    MainActivity myactivity = (MainActivity) activity;
+                if(activity instanceof LoginActivity){
+                    LoginActivity myactivity = (LoginActivity) activity;
                     myactivity.loadFragment(new LogSecondFragment());
                 }
             }
@@ -130,8 +130,8 @@ public class LogFirstFragment extends Fragment {
 
                         sessionManager.createSession(email, nama, id, saldo);
 
-                        Intent main = new Intent(getActivity(), MainActivity.class);
-                        main.putExtra("EMAIL", email);
+                        Intent main = new Intent(getActivity(), HomeActivity.class);
+                        main.putExtra("SALDO", saldo);
                         main.putExtra("NAMA", nama);
                         main.putExtra("ID", id);
                         startActivity(main);

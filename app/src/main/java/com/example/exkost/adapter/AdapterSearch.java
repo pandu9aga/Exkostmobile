@@ -15,16 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.exkost.Api.Url;
 import com.example.exkost.BarangView;
 import com.example.exkost.Model.ModelHome;
+import com.example.exkost.Model.ModelSearch;
 import com.example.exkost.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterHome extends RecyclerView.Adapter<AdapterHome.HolderData> {
-    private List<ModelHome> mItems ;
+public class AdapterSearch extends RecyclerView.Adapter<AdapterSearch.HolderData> {
+    private List<ModelSearch> mItems ;
     private Context context;
 
-    public AdapterHome (Context context, List<ModelHome> items)
+    public AdapterSearch (Context context, List<ModelSearch> items)
     {
         this.mItems = items;
         this.context = context;
@@ -39,7 +40,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.HolderData> {
 
     @Override
     public void onBindViewHolder(HolderData holder, int position) {
-        ModelHome md  = mItems.get(position);
+        ModelSearch md  = mItems.get(position);
         holder.namaBarang.setText(md.getNamaBarang());
         holder.namaJenis.setText(md.getNamaJenis());
         holder.hargaBarang.setText(md.getHargaBarang());
@@ -63,7 +64,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.HolderData> {
         ImageView gambarBarang;
         Button toBarang;
         String idBarang;
-        ModelHome md;
+        ModelSearch md;
 
         public  HolderData (View view)
         {

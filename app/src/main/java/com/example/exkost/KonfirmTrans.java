@@ -1,8 +1,8 @@
 package com.example.exkost;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,74 +24,63 @@ import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LelangSend extends AppCompatActivity{
-
-    Button btnSend;
+public class KonfirmTrans extends AppCompatActivity {
+    Button btnKon;
     String iD;
-    ScrollView lsView;
+    ScrollView ktView;
+
     private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.send_winner);
+        setContentView(R.layout.konfirm_transfer);
 
-        queue = Volley.newRequestQueue(LelangSend.this);
+        btnKon = findViewById(R.id.btnKonfirm);
+
+        ktView = findViewById(R.id.parent_scroll);
+        queue = Volley.newRequestQueue(KonfirmTrans.this);
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null)
-        {
+        if (extras != null) {
             iD = extras.getString("id_barang");
         }
 
-        lsView = findViewById(R.id.parent_scroll);
-        btnSend = findViewById(R.id.btnKirim);
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        btnKon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendProcess();
+                confProcess();
             }
         });
 
         viewProcess();
-
     }
-
     private void viewProcess() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.AUC_SEND, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.TRANS_VIEW, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject data = jsonObject.getJSONObject("data");
                     JSONObject highobject = jsonObject.getJSONObject("bid");
-                    JSONObject win = jsonObject.getJSONObject("winner");
 
-                    String nama = data.getString("nama_barang");
-                    String jenis = data.getString("nama_jenis_barang");
-                    String waktu = data.getString("waktu_lelang");
-                    String high = highobject.getString("jumlah_tawaran");
-                    String harga = data.getString("harga_barang");
-                    String gambar = data.getString("nama_gambar_barang");
-                    String pemenang = win.getString("nama_akun");
-                    String alamatwin = win.getString("alamat_akun");
+                    String nominal = highobject.getString("jumlah_tawaran");
+                    String gambar = data.getString("bukti_transfer");
 
-
-                    setdata(nama,jenis,waktu,high,gambar,harga,pemenang,alamatwin);
+                    setdata(nominal,gambar);
                 } catch (Exception e) {
-                    Snackbar.make(lsView, e.toString(), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(ktView, e.toString(), Snackbar.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Snackbar.make(lsView, error.toString(), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(ktView, error.toString(), Snackbar.LENGTH_LONG).show();
             }
         })
         {
@@ -105,28 +95,23 @@ public class LelangSend extends AppCompatActivity{
         queue.add(stringRequest);
     }
 
-    public void setdata(String nama, String jenis, String waktu, final String high, String gambar, String harga, String pemenang, String alamatwin){
-        TextView namav = (TextView) findViewById(R.id.namaBarang);
-        TextView jenisv = (TextView) findViewById(R.id.namaJenis);
-        TextView waktuv = (TextView) findViewById(R.id.waktuLelang);
-        TextView highv = (TextView) findViewById(R.id.highBid);
-        TextView hargav = (TextView) findViewById(R.id.hargaBarang);
-        TextView pemenangv = (TextView) findViewById(R.id.pemenang);
-        TextView addWin = (TextView) findViewById(R.id.addWinner);
-        ImageView gambarv = (ImageView) findViewById(R.id.gambarBarang);
-        namav.setText(nama);
-        jenisv.setText(jenis);
-        waktuv.setText(waktu);
-        highv.setText(high);
-        hargav.setText(harga);
-        pemenangv.setText(pemenang);
-        addWin.setText(alamatwin);
-        Picasso.get().load(Url.ASSET_BARANG+gambar).into(gambarv);
+    public void setdata(String nominal, String gambar){
+        TextView nominalv = (TextView) findViewById(R.id.nominal);
+        ImageView gambarv = (ImageView) findViewById(R.id.gambarBukti);
+        nominalv.setText(nominal);
+        Picasso.get().load(Url.ASSET_TRANSFER+gambar).into(gambarv);
+        //get Screen Dimensions
+        DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        //NOTE: If you want to square, just use one of these value.
+        //set as half of dimens
+        gambarv.getLayoutParams().width = width/5*4;
+        gambarv.getLayoutParams().height = width/2;
     }
 
-    private void sendProcess() {
+    private void confProcess() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.TO_SEND, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.TRANS_PROC, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -137,13 +122,13 @@ public class LelangSend extends AppCompatActivity{
                     finish();
 
                 } catch (Exception e) {
-                    Snackbar.make(lsView, e.toString(), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(ktView, e.toString(), Snackbar.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Snackbar.make(lsView, error.toString(), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(ktView, error.toString(), Snackbar.LENGTH_LONG).show();
             }
         })
         {

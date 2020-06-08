@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.exkost.Api.Url;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -62,8 +65,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FragmentTransaction transaction;
 
     SessionManager sessionManager;
+    private RequestQueue queue;
 
-    //private RequestQueue queue;
+    // a static variable to get a reference of our application context
+    public static Context contextOfApplication;
+    public static Context getContextOfApplication()
+    {
+        return contextOfApplication;
+    }
 
     String id,saldo,nama;
 
@@ -98,6 +107,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         sessionManager = new SessionManager(this);
+        queue = Volley.newRequestQueue(HomeActivity.this);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -106,7 +116,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer = findViewById(R.id.drawer_layout);
         View headerView = navigationView.getHeaderView(0);
         TextView namaakun = (TextView) headerView.findViewById(R.id.namaAkun);
-        TextView saldoakun = (TextView) headerView.findViewById(R.id.saldoAkun);
+        //TextView saldoakun = (TextView) headerView.findViewById(R.id.saldoAkun);
 
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -121,19 +131,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if(extras != null)
         {
             id = extras.getString("ID");
-            saldo = extras.getString("SALDO");
-            nama = extras.getString("NAMA");
-
-            namaakun.setText(nama);
-            saldoakun.setText("Saldo: Rp."+saldo);
         }else {
-            saldo = sessionManager.getSaldoAkun();
-            nama = sessionManager.getNamaAkun();
             id = sessionManager.getIdAkun();
-
-            namaakun.setText(nama);
-            saldoakun.setText("Saldo: Rp."+saldo);
         }
+
+        contextOfApplication = getApplicationContext();
+
+        dataAkun();
 
     }
 
@@ -218,7 +222,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 //pindah activity
         public void pindahactiv(View v){
-            Intent i = new Intent(HomeActivity.this,Topup.class); //MainActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+            Intent i = new Intent(HomeActivity.this,Topup.class); //LoginActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
             startActivity(i);
         }
 //pindah activity end
@@ -228,25 +232,54 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }
 
-        public void myAucb(View v) {
-            Intent intent = new Intent(HomeActivity.this, LelangView.class);
-            intent.putExtra("stat","Berlangsung");
-            startActivity(intent);
-        }
-        public void myAuck(View v) {
-            Intent intent = new Intent(HomeActivity.this, LelangView.class);
-            intent.putExtra("stat","Kirim");
-            startActivity(intent);
-        }
-        public void myAucs(View v) {
-            Intent intent = new Intent(HomeActivity.this, LelangView.class);
-            intent.putExtra("stat","Selesai");
-            startActivity(intent);
-        }
-
         public String dataId(){
             id = sessionManager.getIdAkun();
             return id;
         }
+
+    private void dataAkun() {
+        navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
+        View headerView = navigationView.getHeaderView(0);
+        final TextView namaakun = (TextView) headerView.findViewById(R.id.namaAkun);
+        //final TextView saldoakun = (TextView) headerView.findViewById(R.id.saldoAkun);
+        final FrameLayout frameLayout = findViewById(R.id.fLayout);
+        SessionManager sessionManager = new SessionManager(this);
+        final String id_akun = sessionManager.getIdAkun();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.API_AKUN, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject data = jsonObject.getJSONObject("data");
+
+                    String nama = data.getString("nama_akun");
+                    String saldo = data.getString("saldo_akun");
+
+                    namaakun.setText(nama);
+                    //saldoakun.setText("Saldo: Rp."+saldo);
+
+                } catch (Exception e) {
+                    Snackbar.make(frameLayout, e.toString(), Snackbar.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(frameLayout, error.toString(), Snackbar.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id_akun);
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
 
 }

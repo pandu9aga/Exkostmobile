@@ -8,10 +8,12 @@ import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,29 +29,53 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.exkost.Api.Url;
+import com.example.exkost.Model.ModelHome;
+import com.example.exkost.Model.ModelSearch;
+import com.example.exkost.adapter.AdapterHome;
+import com.example.exkost.adapter.AdapterSearch;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Search extends AppCompatActivity{
 
-    public static final String JARGON = "Cari";
+    public static String JARGON = "Cari";
     Toolbar toolbar;
 
-    DrawerLayout drawer;
-    ActionBarDrawerToggle toggle;
+    SessionManager sessionManager;
+    RequestQueue queue;
 
-    Fragment fragment;
-    FragmentTransaction transaction;
+    String key;
 
-    ListView listView;
-    ListViewAdapter listViewAdapter;
-    ArrayList<App> arrayList = new ArrayList<>();
+    SwipeRefreshLayout swipeSearch;
+    List<ModelSearch> mItems;
+    RecyclerView mRecyclerview;
+    RecyclerView.LayoutManager mManager;
+    RecyclerView.Adapter mAdapter;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +84,97 @@ public class Search extends AppCompatActivity{
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        int[] iconList = new int[]{
-                R.drawable.ic_image_black_24dp, R.drawable.ic_image_black_24dp, R.drawable.ic_image_black_24dp
-        };
-
-        final String[] Headline = {"Meja", "Kasur", "Lemari"
-        };
-        String[] Subhead = {"Meja", "Kasur", "Lemari"
-        };
-
-        listView = findViewById(R.id.listview);
-
-        for (int i = 0; i < Headline.length; i++) {
-            App app = new App(Headline[i], Subhead[i], iconList[i]);
-            arrayList.add(app);
-
-            listViewAdapter = new ListViewAdapter(this, arrayList);
-            listView.setAdapter(listViewAdapter);
-        }
-
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Cari");
+        getSupportActionBar().setTitle(JARGON);
+
+        queue = Volley.newRequestQueue(Search.this);
+
+        mRecyclerview = (RecyclerView) findViewById(R.id.recSearch);
+        pd = new ProgressDialog(Search.this);
+        mItems = new ArrayList<>();
+        mManager = new GridLayoutManager(Search.this,2);
+        mRecyclerview.setLayoutManager(mManager);
+        mAdapter = new AdapterSearch(Search.this,mItems);
+        mRecyclerview.setAdapter(mAdapter);
+
+        swipeSearch = findViewById(R.id.swipeSearch);
+        swipeSearch.setColorSchemeResources(R.color.red, R.color.red2);
+        swipeSearch.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                proses();
+                if(swipeSearch.isRefreshing()) {
+                    swipeSearch.setRefreshing(false);
+                }
+            }
+        });
 
         handleIntent(getIntent());
+    }
+
+    private void loadSearch() {
+        SessionManager sessionManager = new SessionManager(Search.this);
+        final String id_akun = sessionManager.getIdAkun();
+
+        pd.setMessage("Mengambil Data");
+        pd.setCancelable(false);
+        pd.show();
+        mItems.clear();
+        //mAdapter.notifyDataSetChanged();
+
+        StringRequest reqData = new StringRequest(Request.Method.POST, Url.API_SEARCH,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        pd.cancel();
+                        Log.d("volley","response : " + response.toString());
+                        try {
+                            JSONArray j = new JSONArray(response);
+                            for(int i = 0 ; i < response.length(); i++)
+                            {
+                                try {
+                                    JSONObject data = j.getJSONObject(i);
+                                    ModelSearch md = new ModelSearch();
+                                    md.setIdBarang(data.getString("id_barang"));
+                                    md.setNamaBarang(data.getString("nama_barang"));
+                                    md.setNamaJenis(data.getString("nama_jenis_barang"));
+                                    md.setHargaBarang(data.getString("harga_barang"));
+                                    md.setWaktuLelang(data.getString("waktu_lelang"));
+                                    md.setGambarBarang(data.getString("nama_gambar_barang"));
+                                    mItems.add(md);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            mAdapter.notifyDataSetChanged();
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pd.cancel();
+                        Log.d("volley", "error : " + error.getMessage());
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id_akun);
+                params.put("keyword",key);
+                return params;
+            }
+        };
+
+        queue.add(reqData);
+    }
+
+    public void proses(){
+        loadSearch();
+        mItems.clear();
     }
 
     //searchmenu start
@@ -94,17 +188,18 @@ public class Search extends AppCompatActivity{
             @Override
             public boolean onQueryTextSubmit(String s) {
                 if (TextUtils.isEmpty(s)) {
-                    listViewAdapter.filter("");
-                    listView.clearTextFilter();
+                    return false;
                 } else {
-                    listViewAdapter.filter(s);
+                    key = s;
+                    mItems.clear();
+                    loadSearch();
+                    return false;
                 }
-                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                return false;
+                return true;
             }
         });
         return true;
@@ -124,13 +219,10 @@ public class Search extends AppCompatActivity{
             String query = intent.getStringExtra(SearchManager.QUERY);
             // use the query to search the data somehow
 
-            listViewAdapter.filter(query);
+            key = query;
+            JARGON = query;
+            loadSearch();
 
-            Bundle appData = intent.getBundleExtra(SearchManager.APP_DATA);
-            if (appData != null) {
-                boolean jargon = appData.getBoolean(Search.JARGON);
-                // use the context data to refine our search
-            }
         }
     }
 

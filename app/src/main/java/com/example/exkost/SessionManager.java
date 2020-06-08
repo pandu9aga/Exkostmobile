@@ -4,9 +4,6 @@ package com.example.exkost;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-import java.util.HashMap;
 
 public class SessionManager {
     SharedPreferences pref;
@@ -43,7 +40,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        Intent login = new Intent(context, MainActivity.class);
+        Intent login = new Intent(context, LoginActivity.class);
         context.startActivity(login);
         ((HomeActivity)context).finish();
     }

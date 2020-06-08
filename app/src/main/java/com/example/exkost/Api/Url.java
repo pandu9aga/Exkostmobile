@@ -2,9 +2,29 @@ package com.example.exkost.Api;
 
 public class Url {
     //    api endpoint untuk request volley
-    public static final String API_LOGIN = "http://192.168.43.91/exkost/api_login/login";
-    public static final String API_AKUN = "http://192.168.43.91/exkost/api_login/akun";
-    public static final String API_REGISTER = "http://192.168.43.91/exkost/api_login/register";
-    public static final String API_HOME = "http://192.168.43.91/exkost/api_home/home";
-    public static final String API_BARANG = "http://192.168.43.91/exkost/api_barang/barang";
+    public static final String BASE = "http://192.168.43.91/exkost/";
+    public static final String API_LOGIN = BASE+"api_login/login";
+    public static final String API_AKUN = BASE+"api_login/akun";
+    public static final String API_REGISTER = BASE+"api_login/register";
+    public static final String API_HOME = BASE+"api_home/home";
+    public static final String API_BARANG = BASE+"api_barang/barang";
+    public static final String API_TAWAR = BASE+"api_barang/tawaran";
+    public static final String ASSET_BARANG = BASE+"assets/barang/";
+    public static final String API_CART = BASE+"api_cart/cart";
+    public static final String DEL_CART = BASE+"api_cart/delcart";
+    public static final String API_TERIMA = BASE+"api_barang/terima";
+    public static final String AUC_BERLANGSUNG = BASE+"api_lelang/berlangsung";
+    public static final String AUC_KIRIM = BASE+"api_lelang/kirim";
+    public static final String AUC_SELESAI = BASE+"api_lelang/selesai";
+    public static final String AUC_BARANG = BASE+"api_lelang/barang";
+    public static final String AUC_SEND = BASE+"api_lelang/view_send";
+    public static final String TO_SEND = BASE+"api_lelang/to_send";
+    public static final String TRANS_VIEW = BASE+"api_lelang/view_trans";
+    public static final String ASSET_TRANSFER = BASE+"assets/transfer/";
+    public static final String TRANS_PROC = BASE+"api_lelang/proses_konfirm";
+    public static final String API_PROFIL = BASE+"api_profil/profil";
+    public static final String ASSET_PROFIL = BASE+"assets/profil/";
+    public static final String UPDATE_PROFIL = BASE+"api_profil/update_profil";
+    public static final String API_SEARCH = BASE+"api_cari/cari";
+    public static final String API_JENIS = BASE+"api_barang/jenis";
 }
