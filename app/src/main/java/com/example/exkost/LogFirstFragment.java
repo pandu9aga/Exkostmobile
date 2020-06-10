@@ -160,7 +160,7 @@ public class LogFirstFragment extends Fragment {
     }
 
     public void confirmInputLogin() {
-        if (validateEmail() | validatePassword()) {
+        if (validateEmail() && validatePassword()) {
             loginProcess();
         }
     }

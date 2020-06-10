@@ -15,7 +15,7 @@ public class Rekening extends AppCompatActivity {
     }
 
     public void pindahcheckoutlagi(View v){
-        Intent i = new Intent(Rekening.this, CheckoutActivity.class); //LoginActivity adalah aktivity awal ,praktikum1Activity activity yang akan di tuju
+        Intent i = new Intent(Rekening.this, CheckoutActivity.class);
         startActivity(i);
     }
 }

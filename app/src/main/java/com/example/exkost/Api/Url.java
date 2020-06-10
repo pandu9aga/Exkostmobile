@@ -8,6 +8,7 @@ public class Url {
     public static final String API_REGISTER = BASE+"api_login/register";
     public static final String API_HOME = BASE+"api_home/home";
     public static final String API_BARANG = BASE+"api_barang/barang";
+    public static final String ADD_BARANG = BASE+"api_barang/tambahbarang";
     public static final String API_TAWAR = BASE+"api_barang/tawaran";
     public static final String ASSET_BARANG = BASE+"assets/barang/";
     public static final String API_CART = BASE+"api_cart/cart";
@@ -27,4 +28,11 @@ public class Url {
     public static final String UPDATE_PROFIL = BASE+"api_profil/update_profil";
     public static final String API_SEARCH = BASE+"api_cari/cari";
     public static final String API_JENIS = BASE+"api_barang/jenis";
+    public static final String API_MYTOPUP = BASE+"api_topup/allmyTopup";
+    public static final String BANK_ADMIN = BASE+"api_topup/bank_admin";
+    public static final String API_CHECK = BASE+"api_topup/checkout";
+    public static final String API_DETAILTOP = BASE+"api_topup/detailTopup";
+    public static final String ASSET_TOPUP = BASE+"assets/topup/";
+    public static final String UPLOAD_BUKTI = BASE+"api_topup/uploadBukti";
+    public static final String DEL_TOPUP = BASE+"api_topup/hapus_topup";
 }

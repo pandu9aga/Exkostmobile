@@ -30,23 +30,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Rp 250.000"
+                android:text="Rp 000"
                 android:textSize="24dp"
                 android:textStyle="bold"
                 android:id="@+id/nomSaldo"/>
         </LinearLayout>
 
         <Button
-            android:onClick="pindahactiv"
-            android:id="@+id/button2"
+            android:id="@+id/btnTopup"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:background="@drawable/buttonshape"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="8dp"
             android:text="Topup"
             android:textColor="#ffff"
             android:textSize="15sp" />
@@ -60,17 +59,35 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <FrameLayout
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:id="@+id/spTop">
+    </Spinner>
 
-        <ListView
-            android:id="@+id/list"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/swipeSaldo">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </ListView>
 
-    </FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recSaldo">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

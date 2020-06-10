@@ -199,7 +199,7 @@ public class LogSecondFragment extends Fragment {
     }
 
     public void confirmInputRegister() {
-        if (validateEmail() | validatePassword() | validateAlamat() | validateNorek() | validateNotelp() | validateNama()) {
+        if (validateEmail() && validatePassword() && validateAlamat() && validateNorek() && validateNotelp() && validateNama()) {
             registerProcess();
         }
     }
