@@ -129,9 +129,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_account:
                 fragment = new MenuProfileFragment();
                 break;
-            case R.id.nav_notification:
-                fragment = new MenuNotificationFragment();
-                break;
             case R.id.nav_logout:
                 sessionManager.logout();
                 break;
@@ -233,7 +230,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     String nama = data.getString("nama_akun");
                     String saldo = data.getString("saldo_akun");
 
-                    namaakun.setText(nama);
+                    //namaakun.setText(nama);
                     //saldoakun.setText("Saldo: Rp."+saldo);
 
                 } catch (Exception e) {

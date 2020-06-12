@@ -285,12 +285,7 @@ public class Buktitrans extends AppCompatActivity {
     }
 
     public void pindahhome(View v){
-        if (from.equals("checkout")){
-            Intent i = new Intent(Buktitrans.this, HomeActivity.class);
-            startActivity(i);
-        }else {
-            finish();
-        }
+        finish();
     }
 
 
