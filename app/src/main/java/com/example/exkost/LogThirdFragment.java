@@ -11,11 +11,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.AuthFailureError;
+//import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.TimeoutError;
+//import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -23,28 +30,33 @@ import com.example.exkost.Api.Url;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.apache.http.params.HttpConnectionParams;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LogFirstFragment extends Fragment {
+import static com.android.volley.DefaultRetryPolicy.DEFAULT_TIMEOUT_MS;
+
+public class LogThirdFragment extends Fragment {
 
     View view;
-    CardView firstButton;
-    TextView firstFragment,lupaPass;
-    TextInputLayout password,email;
+    CardView thirdButton;
+    TextView thirdFragment;
+    TextInputLayout email;
     RelativeLayout fragView;
 
     SessionManager sessionManager;
-
     private RequestQueue queue;
+
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.login_fragment_one, container, false);
+        view = inflater.inflate(R.layout.login_fragment_three, container, false);
 
         queue = Volley.newRequestQueue(getActivity());
         sessionManager = new SessionManager(getActivity());
@@ -54,41 +66,28 @@ public class LogFirstFragment extends Fragment {
             startActivity(main);
         }
 
-        firstFragment = (TextView) view.findViewById(R.id.firstFragment);
-        firstFragment.setOnClickListener(new View.OnClickListener() {
+        thirdFragment = (TextView) view.findViewById(R.id.firstFragment);
+        thirdFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Activity activity = getActivity();
                 if(activity instanceof LoginActivity){
                     LoginActivity myactivity = (LoginActivity) activity;
-                    myactivity.loadFragment(new LogSecondFragment());
+                    myactivity.loadFragment(new LogFirstFragment());
                 }
             }
         });
 
-        lupaPass = (TextView) view.findViewById(R.id.forgotPassword);
-        lupaPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Activity activity = getActivity();
-                if(activity instanceof LoginActivity){
-                    LoginActivity myactivity = (LoginActivity) activity;
-                    myactivity.loadFragment(new LogThirdFragment());
-                }
-            }
-        });
+        email = view.findViewById(R.id.lupapassEmail);
 
-        email = view.findViewById(R.id.loginEmail);
-        password = view.findViewById(R.id.loginPassword);
+        fragView = view.findViewById(R.id.lupapassFrag);
 
-        fragView = view.findViewById(R.id.loginFrag);
-
-        firstButton = (CardView) view.findViewById(R.id.buttonMasuk);
-        firstButton.setOnClickListener(new View.OnClickListener() {
+        thirdButton = (CardView) view.findViewById(R.id.buttonLupaPass);
+        thirdButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                confirmInputLogin();
+                confirmInputLupapass();
             }
         });
 
@@ -108,45 +107,29 @@ public class LogFirstFragment extends Fragment {
         }
     }
 
-    private boolean validatePassword() {
-        String passwordInput = password.getEditText().getText().toString().trim();
-
-        if (passwordInput.isEmpty()) {
-            password.setError("Password harus diisi");
-            return false;
-        } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private void loginProcess() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.API_LOGIN, new Response.Listener<String>() {
+    private void lupapassProcess() {
+        //RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.LUPA_PASS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
-                    String message = jsonObject.getString("message");
+                    String message = jsonObject.getString("msg");
 
-                    if (status.equals("false")) {
-                        Snackbar.make(fragView, message, Snackbar.LENGTH_LONG).show();
-                    } else {
-                        JSONObject data = jsonObject.getJSONObject("data");
+                    if (message.equals("failedsend")) {
+                        Snackbar.make(fragView, "Gagal mengirim kode verifikasi ke email anda", Snackbar.LENGTH_LONG).show();
+                    }else if(message.equals("noemail")){
+                        Snackbar.make(fragView, "Email tidak terdaftar", Snackbar.LENGTH_LONG).show();
+                    }else {
+                        String emails = message;
 
-                        String id = data.getString("id_akun");
-                        String email = data.getString("email_akun");
-                        String nama = data.getString("nama_akun");
-                        String saldo = data.getString("saldo_akun");
+                        Bundle bundleobj = new Bundle();
+                        bundleobj.putString("email", emails);
 
-                        sessionManager.createSession(email, nama, id, saldo);
-
-                        Intent main = new Intent(getActivity(), HomeActivity.class);
-                        main.putExtra("SALDO", saldo);
-                        main.putExtra("NAMA", nama);
-                        main.putExtra("ID", id);
-                        startActivity(main);
+                        ResetpassFragment fragobj = new ResetpassFragment();
+                        fragobj.setArguments(bundleobj);
+                        mFragmentTransaction.addToBackStack(null);
+                        mFragmentTransaction.replace(R.id.frameLayout, fragobj).commit();
                     }
                 } catch (Exception e) {
                     Snackbar.make(fragView, e.toString(), Snackbar.LENGTH_LONG).show();
@@ -163,17 +146,19 @@ public class LogFirstFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email.getEditText().getText().toString().trim());
-                params.put("password", password.getEditText().getText().toString().trim());
                 return params;
             }
         };
-
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(stringRequest);
     }
 
-    public void confirmInputLogin() {
-        if (validateEmail() && validatePassword()) {
-            loginProcess();
+    public void confirmInputLupapass() {
+        if (validateEmail()) {
+            lupapassProcess();
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.exkost;
 
 import android.app.Activity;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,15 +30,20 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LogFirstFragment extends Fragment {
+public class ResetpassFragment extends Fragment {
 
     View view;
     CardView firstButton;
-    TextView firstFragment,lupaPass;
-    TextInputLayout password,email;
+    TextView firstFragment,email;
+    TextInputLayout password,kode;
     RelativeLayout fragView;
 
+    String theEmail;
+
     SessionManager sessionManager;
+
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
 
     private RequestQueue queue;
 
@@ -44,7 +51,7 @@ public class LogFirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.login_fragment_one, container, false);
+        view = inflater.inflate(R.layout.reset_password, container, false);
 
         queue = Volley.newRequestQueue(getActivity());
         sessionManager = new SessionManager(getActivity());
@@ -61,49 +68,44 @@ public class LogFirstFragment extends Fragment {
                 Activity activity = getActivity();
                 if(activity instanceof LoginActivity){
                     LoginActivity myactivity = (LoginActivity) activity;
-                    myactivity.loadFragment(new LogSecondFragment());
+                    myactivity.loadFragment(new LogFirstFragment());
                 }
             }
         });
 
-        lupaPass = (TextView) view.findViewById(R.id.forgotPassword);
-        lupaPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Activity activity = getActivity();
-                if(activity instanceof LoginActivity){
-                    LoginActivity myactivity = (LoginActivity) activity;
-                    myactivity.loadFragment(new LogThirdFragment());
-                }
-            }
-        });
+        kode = view.findViewById(R.id.resetpassRegiskey);
+        password = view.findViewById(R.id.resetpassPassword);
+        email = view.findViewById(R.id.email);
 
-        email = view.findViewById(R.id.loginEmail);
-        password = view.findViewById(R.id.loginPassword);
+        Bundle bundle =getArguments();
+        if(null!=bundle) {
+            theEmail=bundle.getString("email");
+        }
+        email.setText(theEmail);
 
-        fragView = view.findViewById(R.id.loginFrag);
+        fragView = view.findViewById(R.id.resetpassFrag);
 
-        firstButton = (CardView) view.findViewById(R.id.buttonMasuk);
+        firstButton = (CardView) view.findViewById(R.id.buttonResetPass);
         firstButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                confirmInputLogin();
+                confirmInputReset();
             }
         });
 
         return view;
     }
 
-    private boolean validateEmail() {
-        String emailInput = email.getEditText().getText().toString().trim();
+    private boolean validateKode() {
+        String kodeInput = kode.getEditText().getText().toString().trim();
 
-        if (emailInput.isEmpty()) {
-            email.setError("Email harus diisi");
+        if (kodeInput.isEmpty()) {
+            kode.setError("Kode harus diisi");
             return false;
         } else {
-            email.setError(null);
-            email.setErrorEnabled(false);
+            kode.setError(null);
+            kode.setErrorEnabled(false);
             return true;
         }
     }
@@ -121,31 +123,21 @@ public class LogFirstFragment extends Fragment {
         }
     }
 
-    private void loginProcess() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.API_LOGIN, new Response.Listener<String>() {
+    private void resetProcess() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.RESET_PASS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
-                    String message = jsonObject.getString("message");
+                    String message = jsonObject.getString("reset");
 
-                    if (status.equals("false")) {
-                        Snackbar.make(fragView, message, Snackbar.LENGTH_LONG).show();
-                    } else {
-                        JSONObject data = jsonObject.getJSONObject("data");
+                    if (message.equals("keyfalse")) {
+                        Snackbar.make(fragView, "Kode reset salah", Snackbar.LENGTH_LONG).show();
+                    }else {
+                        String reset = message;
 
-                        String id = data.getString("id_akun");
-                        String email = data.getString("email_akun");
-                        String nama = data.getString("nama_akun");
-                        String saldo = data.getString("saldo_akun");
-
-                        sessionManager.createSession(email, nama, id, saldo);
-
-                        Intent main = new Intent(getActivity(), HomeActivity.class);
-                        main.putExtra("SALDO", saldo);
-                        main.putExtra("NAMA", nama);
-                        main.putExtra("ID", id);
+                        Intent main = new Intent(getActivity(), LoginActivity.class);
+                        main.putExtra("reset", reset);
                         startActivity(main);
                     }
                 } catch (Exception e) {
@@ -162,7 +154,7 @@ public class LogFirstFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email.getEditText().getText().toString().trim());
+                params.put("reset_key", kode.getEditText().getText().toString().trim());
                 params.put("password", password.getEditText().getText().toString().trim());
                 return params;
             }
@@ -171,9 +163,9 @@ public class LogFirstFragment extends Fragment {
         queue.add(stringRequest);
     }
 
-    public void confirmInputLogin() {
-        if (validateEmail() && validatePassword()) {
-            loginProcess();
+    public void confirmInputReset() {
+        if (validateKode() && validatePassword()) {
+            resetProcess();
         }
     }
 

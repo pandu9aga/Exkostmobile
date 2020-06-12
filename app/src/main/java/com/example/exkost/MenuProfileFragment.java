@@ -220,9 +220,9 @@ public class MenuProfileFragment extends Fragment {
 
                     progressDialog.dismiss();
                     if(status.equals("true")){
-                        Intent intent = getActivity().getIntent();
-                        getActivity().finish();
-                        getActivity().startActivity(intent);
+                        //Intent intent = getActivity().getIntent();
+                        //getActivity().finish();
+                        //getActivity().startActivity(intent);
                         Toast.makeText(getActivity(), "Update Sukses", Toast.LENGTH_LONG).show();
                     }
                     else{
@@ -249,8 +249,9 @@ public class MenuProfileFragment extends Fragment {
                 params.put("notelp", notelpv.getText().toString().trim());
                 params.put("email", emailv.getText().toString().trim());
                 params.put("password", passwordv.getText().toString().trim());
-                params.put("foto", imageToString(bitmap));
-
+                if (bitmap!=null) {
+                    params.put("foto", imageToString(bitmap));
+                }
                 return params;
             }
         };

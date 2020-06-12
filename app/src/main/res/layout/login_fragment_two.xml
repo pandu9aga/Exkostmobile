@@ -136,7 +136,7 @@
                     android:drawablePadding="8dp"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:autofillHints="email"
+                    android:autofillHints="password"
                     android:id="@+id/passwordrText"/>
             </com.google.android.material.textfield.TextInputLayout>
 
