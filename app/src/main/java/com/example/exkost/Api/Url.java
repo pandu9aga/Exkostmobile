@@ -2,7 +2,7 @@ package com.example.exkost.Api;
 
 public class Url {
     //    api endpoint untuk request volley
-    public static final String BASE = "http://192.168.43.91/exkost/";
+    public static final String BASE = "http://exkost.mif-project.com/";
     public static final String API_LOGIN = BASE+"api_login/login";
     public static final String API_AKUN = BASE+"api_login/akun";
     public static final String API_REGISTER = BASE+"api_login/register";
