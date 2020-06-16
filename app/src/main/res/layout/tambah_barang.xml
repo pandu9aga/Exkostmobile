@@ -50,7 +50,7 @@
             android:background="@color/light">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
                 android:layout_marginLeft="10dp"
@@ -60,7 +60,7 @@
                 app:hintEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:ems="20"
@@ -71,7 +71,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
@@ -81,7 +81,7 @@
                 app:hintEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:ems="20"
@@ -95,7 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +106,7 @@
                     app:hintEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
                         android:enabled="false"
@@ -123,7 +124,7 @@
                     app:hintAnimationEnabled="true"
                     app:hintEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
                         android:enabled="false"
@@ -135,15 +136,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@color/dark"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
-                    android:src="@drawable/ic_date_range_black_24dp"
                     android:id="@+id/pickDate"
+                    android:layout_width="73dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/dark"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:src="@drawable/ic_date_range_black_24dp" />
 
             </LinearLayout>
 
@@ -170,7 +171,7 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
@@ -180,7 +181,7 @@
                 app:hintEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:ems="20"
@@ -196,7 +197,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/white"
-                android:background="@color/red"
+                android:background="@drawable/btn_red"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="Upload Gambar"
@@ -221,7 +222,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/white"
-                android:background="@color/red"
+                android:background="@drawable/btn_red"
                 android:text="Tambah Barang"
                 android:id="@+id/tambahBarang"
                 />
