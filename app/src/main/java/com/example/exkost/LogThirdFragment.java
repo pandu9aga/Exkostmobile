@@ -3,6 +3,7 @@ package com.example.exkost;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,20 +117,11 @@ public class LogThirdFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     String message = jsonObject.getString("msg");
 
-                    if (message.equals("failedsend")) {
-                        Snackbar.make(fragView, "Gagal mengirim kode verifikasi ke email anda", Snackbar.LENGTH_LONG).show();
-                    }else if(message.equals("noemail")){
+                    if(message.equals("noemail")){
                         Snackbar.make(fragView, "Email tidak terdaftar", Snackbar.LENGTH_LONG).show();
                     }else {
-                        String emails = message;
-
-                        Bundle bundleobj = new Bundle();
-                        bundleobj.putString("email", emails);
-
-                        ResetpassFragment fragobj = new ResetpassFragment();
-                        fragobj.setArguments(bundleobj);
-                        mFragmentTransaction.addToBackStack(null);
-                        mFragmentTransaction.replace(R.id.frameLayout, fragobj).commit();
+                        String reset = jsonObject.getString("reset");
+                        sendEmailProcess(message,reset);
                     }
                 } catch (Exception e) {
                     Snackbar.make(fragView, e.toString(), Snackbar.LENGTH_LONG).show();
@@ -146,6 +138,55 @@ public class LogThirdFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email.getEditText().getText().toString().trim());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(stringRequest);
+    }
+
+    private void sendEmailProcess(final String email, final String reset) {
+        //RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.SEND_EMAIL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String emails = jsonObject.getString("msg");
+
+                    if (emails.equals("fail")){
+                        Snackbar.make(fragView, "Kode verifikasi tidak dapat dikirim", Snackbar.LENGTH_LONG).show();
+                    }else {
+                        Activity activity = getActivity();
+                        if(activity instanceof LoginActivity){
+                            Bundle bundleobj = new Bundle();
+                            bundleobj.putString("email", emails);
+
+
+                            LoginActivity myactivity = (LoginActivity) activity;
+                            myactivity.loadFragment(new ResetpassFragment(bundleobj));
+                        }
+                    }
+                } catch (Exception e) {
+                    Snackbar.make(fragView, e.toString(), Snackbar.LENGTH_LONG).show();
+                    Log.d("Error",e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Snackbar.make(fragView, error.toString(), Snackbar.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("reset",reset);
                 return params;
             }
         };

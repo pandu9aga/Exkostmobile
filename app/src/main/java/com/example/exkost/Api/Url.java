@@ -36,5 +36,6 @@ public class Url {
     public static final String UPLOAD_BUKTI = BASE+"api_topup/uploadBukti";
     public static final String DEL_TOPUP = BASE+"api_topup/hapus_topup";
     public static final String LUPA_PASS = BASE+"api_resetpass/email_reset_password_validation";
+    public static final String SEND_EMAIL = BASE+"api_resetpass/send_email";
     public static final String RESET_PASS = BASE+"api_resetpass/reset_password_validation";
 }

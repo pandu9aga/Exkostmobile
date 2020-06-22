@@ -1,7 +1,8 @@
 package com.example.exkost;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import androidx.fragment.app.Fragment;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressLint("ValidFragment")
 public class ResetpassFragment extends Fragment {
 
     View view;
@@ -46,6 +48,11 @@ public class ResetpassFragment extends Fragment {
     FragmentTransaction mFragmentTransaction;
 
     private RequestQueue queue;
+
+    @SuppressLint("ValidFragment")
+    public ResetpassFragment(Bundle bundleobj) {
+        theEmail=bundleobj.getString("email");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,10 +84,6 @@ public class ResetpassFragment extends Fragment {
         password = view.findViewById(R.id.resetpassPassword);
         email = view.findViewById(R.id.email);
 
-        Bundle bundle =getArguments();
-        if(null!=bundle) {
-            theEmail=bundle.getString("email");
-        }
         email.setText(theEmail);
 
         fragView = view.findViewById(R.id.resetpassFrag);
