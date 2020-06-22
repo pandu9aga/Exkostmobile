@@ -2,6 +2,7 @@ package com.example.exkost.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,14 @@ public class AdapterTopup extends RecyclerView.Adapter<AdapterTopup.HolderData> 
         final ModelTopup md  = mItems.get(position);
         holder.nominal.setText(md.getNominal());
         Picasso.get().load(Url.ASSET_TOPUP+md.getBukti()).into(holder.gambarBukti);
+
+        //get Screen Dimensions
+        DisplayMetrics metrics = context.getApplicationContext().getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        //NOTE: If you want to square, just use one of these value.
+        //set as half of dimens
+        holder.gambarBukti.getLayoutParams().width = width/4;
+        holder.gambarBukti.getLayoutParams().height = width/6;
 
         holder.delTopup.setOnClickListener(new View.OnClickListener() {
             @Override

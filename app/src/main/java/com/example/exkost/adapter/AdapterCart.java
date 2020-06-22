@@ -2,6 +2,7 @@ package com.example.exkost.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,16 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderData> {
         holder.highBid.setText(md.getHighBid());
         holder.myBid.setText(md.getMyBid());
         Picasso.get().load(Url.ASSET_BARANG+md.getGambarBarang()).into(holder.gambarBarang);
+
+       // Picasso.get().load(Url.ASSET_BARANG+gambar).into(gambarv);
+
+        //get Screen Dimensions
+        DisplayMetrics metrics = context.getApplicationContext().getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        //NOTE: If you want to square, just use one of these value.
+        //set as half of dimens
+        holder.gambarBarang.getLayoutParams().width = width/3;
+        holder.gambarBarang.getLayoutParams().height = width/5;
 
         String hb = md.getHighBid();
         String mb = md.getMyBid();
