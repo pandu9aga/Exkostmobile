@@ -3,6 +3,7 @@ package com.example.exkost;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -122,6 +123,14 @@ public class LelangSend extends AppCompatActivity{
         pemenangv.setText(pemenang);
         addWin.setText(alamatwin);
         Picasso.get().load(Url.ASSET_BARANG+gambar).into(gambarv);
+
+        //get Screen Dimensions
+        DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        //NOTE: If you want to square, just use one of these value.
+        //set as half of dimens
+        gambarv.getLayoutParams().width = width/3;
+        gambarv.getLayoutParams().height = width/5;
     }
 
     private void sendProcess() {
